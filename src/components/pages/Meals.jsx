@@ -1,5 +1,5 @@
 import React from 'react'
-import AvailableMeals from './AvailableMeals'
+import AvailableMeals from '../Meals/AvailableMeals'
 
 const Meals = () => {
   return <AvailableMeals />

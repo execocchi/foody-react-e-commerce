@@ -4,13 +4,17 @@
 .details {
   background-color: transparent;
   border: 1px solid #8a2b06;
+  text-decoration: none;
+  color: inherit;
 }
+
 .add {
   background-color: #8a2b06;
   border: 1px solid #8a2b06;
   color: white;
 }
-.form button {
+.form button,
+.details {
   margin: 0.5rem;
   font: inherit;
   cursor: pointer;
@@ -20,7 +24,9 @@
 }
 
 .form button:hover,
-.form button:active {
+.form button:active,
+.details:hover,
+.details:active {
   background-color: #641e03;
   border-color: #641e03;
 }

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { Switch, Route } from 'react-router-dom'
 import Cart from './components/Cart/Cart'
+import Intro from './components/pages/Intro'
 import Header from './components/Layout/Header'
-import Meals from './components/Meals/Meals'
+import Meals from './components/pages/Meals'
+import MealDetails from './components/pages/MealsDetails'
 import CartProvider from './store/CartProvider'
 
 function App() {
@@ -19,7 +22,17 @@ function App() {
       {showCart && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <main>
-        <Meals />
+        <Switch>
+          <Route path="/" exact>
+            <Intro />
+          </Route>
+          <Route path="/meals" excat>
+            <Meals />
+          </Route>
+          <Route path="/meals-details/:mealId">
+            <MealDetails />
+          </Route>
+        </Switch>
       </main>
     </CartProvider>
   )

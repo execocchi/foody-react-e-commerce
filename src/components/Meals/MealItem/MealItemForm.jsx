@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Input from '../../UI/Input'
 import classes from './MealItemForm.module.css'
 
@@ -36,7 +37,9 @@ const MealItemForm = (props) => {
           defaultValue: '1',
         }}
       />
-      <button className={classes.details}>Details</button>
+      <Link to={`/meals-details/${props.id}`} className={classes.details}>
+        Details
+      </Link>
       <button className={classes.add}>+ Add</button>
       {!amountIsValid && <p>Please enter valida amount betweeen 1 to 5</p>}
     </form>
