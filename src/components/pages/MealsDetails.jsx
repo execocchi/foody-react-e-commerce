@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import classes from './Meals-details.module.css'
 
 const DUMMY_MEALS = [
@@ -48,6 +48,7 @@ const DUMMY_MEALS = [
 const MealDetails = (props) => {
   const params = useParams()
   const meal = DUMMY_MEALS.find((meal) => meal.id === params.mealId)
+  if (!meal) return <p>"meal not found"</p>
 
   return (
     <section className={classes.details}>
@@ -55,6 +56,9 @@ const MealDetails = (props) => {
       <div>
         <p>{meal.details}</p>
       </div>
+      <Link to="/meals" className={classes.button}>
+        Go to marketplace
+      </Link>
     </section>
   )
 }
