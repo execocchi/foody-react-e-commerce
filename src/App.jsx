@@ -7,7 +7,9 @@ import Meals from './components/pages/Meals'
 import MealDetails from './components/pages/MealsDetails'
 import CartProvider from './store/CartProvider'
 
+
 function App() {
+  
   const [showCart, setShowCart] = useState(false)
 
   const showCartHandler = () => {
@@ -26,7 +28,7 @@ function App() {
           <Route path="/" exact>
             <Intro />
           </Route>
-          <Route path="/meals" excat>
+          <Route path="/meals" exact>
             <Meals />
           </Route>
           <Route path="/meals-details/:mealId">

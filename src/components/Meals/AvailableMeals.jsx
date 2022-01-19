@@ -1,49 +1,59 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import classes from './AvailableMeals.module.css'
 import Card from '../UI/Card'
 import MealItem from './MealItem/MealItem'
+import db from "../../firebase/firebase"
+import {collection,getDocs} from "firebase/firestore";
+/* import { fileUpload } from '../../firebase/fileUpload' */
+
+
+
+
 
 const AvailableMeals = () => {
-  const [meals, setMeals] = useState([])
 
-  useEffect(() => {
-    const fetch = async () => {
-      const response = await fetch(
-        'https://foody-ecommerce-default-rtdb.firebaseio.com/meals.json',
+  //upload data//
+ /*  const mealsHandler=()=>{
+    DUMMY_MEALS.forEach(async(meal)=>{
+      const imgURL= await fileUpload(meal.img)
+
+      addDoc(collection(db,"meals"),{...meal,img:imgURL})
+      
+  })
+} */
+const [meals, setMeals] = useState([])
+
+  const getMeals=async()=>{
+    let mealsList=[]
+    const querySnapshot= await getDocs(collection(db,"meals"));
+    querySnapshot.forEach((doc)=>{
+     
+      const data=doc.data()
+      mealsList.push(
+        <MealItem
+        key={doc.id}
+        id={doc.id}
+        name={data.name}
+        description={data.description}
+        price={data.price}
+        img={data.img}
+      />
       )
-      const responseData = await response.json()
-      console.log(responseData)
-
-      const fetchMeals = []
-      for (const key in responseData) {
-        fetchMeals.push({
-          id: key,
-          name: responseData[key].name,
-          description: responseData[key].description,
-          details: responseData[key].details,
-          price: responseData[key].price,
-        })
-      }
-
-      setMeals(fetchMeals)
-    }
-    fetch()
+     
+    })
+    setMeals(mealsList)
+  } 
+ 
+ useEffect(() => {
+   getMeals()
   }, [])
 
-  const mealList = meals.map((meal) => (
-    <MealItem
-      key={meal.id}
-      id={meal.id}
-      name={meal.name}
-      description={meal.description}
-      price={meal.price}
-    />
-  ))
+
 
   return (
     <section className={classes.meals}>
       <Card>
-        <ul>{mealList}</ul>
+        <ul>{meals}</ul>
       </Card>
     </section>
   )
