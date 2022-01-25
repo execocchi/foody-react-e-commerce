@@ -3,24 +3,22 @@ import classes from './AvailableMeals.module.css'
 import Card from '../UI/Card'
 import MealItem from './MealItem/MealItem'
 import db from "../../firebase/firebase"
-import {collection,getDocs} from "firebase/firestore";
-/* import { fileUpload } from '../../firebase/fileUpload' */
-
-
+import {addDoc,collection,getDocs} from "firebase/firestore";
+import { fileUpload } from '../../firebase/fileUpload'
 
 
 
 const AvailableMeals = () => {
-
+  
   //upload data//
- /*  const mealsHandler=()=>{
+/*    const mealsHandler=()=>{
     DUMMY_MEALS.forEach(async(meal)=>{
       const imgURL= await fileUpload(meal.img)
 
       addDoc(collection(db,"meals"),{...meal,img:imgURL})
       
   })
-} */
+}  */
 const [meals, setMeals] = useState([])
 
   const getMeals=async()=>{
@@ -54,6 +52,7 @@ const [meals, setMeals] = useState([])
     <section className={classes.meals}>
       <Card>
         <ul>{meals}</ul>
+        
       </Card>
     </section>
   )

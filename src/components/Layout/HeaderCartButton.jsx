@@ -18,7 +18,7 @@ const HeaderCartButton = (props) => {
     setBtnBump(true)
     const timer = setTimeout(() => {
       setBtnBump(false)
-    }, 200)
+    }, 100)
     return () => {
       clearTimeout(timer)
     }

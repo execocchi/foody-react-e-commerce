@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React,{useState,useEffect} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import classes from './Meals-details.module.css'
@@ -50,7 +51,7 @@ const DUMMY_MEALS = [
     price: 15.99,
     img:"/public/img/pizza.jpg"
   },
-]
+] 
 
 const MealDetails = (props) => {
 
