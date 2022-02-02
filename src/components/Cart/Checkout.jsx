@@ -1,10 +1,12 @@
 import React,{useRef,useState} from 'react';
 import classes from './Checkout.module.css';
-
+import swal from 'sweetalert'
 
 const isEmpty=value=> value.trim()===""
 
 const Checkout = (props) => {
+
+    
     const[formInputValidity,setFormInputValidity]=useState({
         name:true,
         street:true,
@@ -15,6 +17,7 @@ const Checkout = (props) => {
    const streetInputRef=useRef()
    const postalCodeInputRef=useRef()
    const cityInputRef=useRef()
+   
 
 
     const confirmHandler = (event) => {
@@ -48,6 +51,13 @@ const Checkout = (props) => {
         city:enteredCity,
         postalCode:enteredPostalCode
     })
+    swal({
+      icon:"success",
+      title:"Order Sent",
+      timer:"1500",
+      buttons:false,      
+    })
+   setTimeout(()=>window.location.reload(),2000)
   };
 
   return (
@@ -76,7 +86,7 @@ const Checkout = (props) => {
         <button type='button' onClick={props.onCancel}>
           Cancel
         </button>
-        <button className={classes.submit}>Confirm</button>
+        <button  className={classes.submit}>Confirm</button>
       </div>
     </form>
   );

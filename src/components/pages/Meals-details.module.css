@@ -5,9 +5,13 @@
   background-color: white;
   margin-top: 5rem;
 }
+
+.details h2 {
+  text-align: center;
+}
 .button {
   margin-top: 1rem;
-  margin-left: 45%;
+  margin-left: 42%;
   font: inherit;
   cursor: pointer;
   padding: 0.25rem 2rem;

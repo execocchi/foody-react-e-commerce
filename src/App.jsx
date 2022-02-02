@@ -6,6 +6,7 @@ import Header from './components/Layout/Header'
 import Meals from './components/pages/Meals'
 import MealDetails from './components/pages/MealsDetails'
 import CartProvider from './store/CartProvider'
+import Error from "./components/UI/Error/Error"
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/meals-details/:mealId">
             <MealDetails />
+          </Route>
+          <Route path= "*" exact>
+            <Error/>
           </Route>
         </Switch>
       </main>

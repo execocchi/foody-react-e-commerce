@@ -5,7 +5,7 @@ import classes from './Meals-details.module.css'
 import db from "../../firebase/firebase"
 import {getDoc,doc} from "firebase/firestore";
 
-const DUMMY_MEALS = [
+/* const DUMMY_MEALS = [
   {
     
     name: 'Sushi',
@@ -51,7 +51,7 @@ const DUMMY_MEALS = [
     price: 15.99,
     img:"/public/img/pizza.jpg"
   },
-] 
+]  */
 
 const MealDetails = (props) => {
 
